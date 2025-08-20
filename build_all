@@ -1,4 +1,3 @@
-
 #! /bin/bash
 
 cd preprocess
@@ -6,6 +5,10 @@ make "$@" || exit 1
 cd ..
 
 cd search
+# here add meddly
+cd meddly
+./autogen.sh || exit 1
+./configure CXXFLAGS="-O3" --without-gmp || exit 1
 make "$@" || exit 1
+make install || exit 1
 cd ..
-
